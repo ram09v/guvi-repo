@@ -43,7 +43,7 @@ export const initialMoviesData = [
     genre: "Family",
     poster: wallEPoster,
     description: "A robot who is responsible for cleaning a waste-covered Earth meets another robot and falls in love with her. Together, they set out on a journey that will alter the fate of mankind.",
-    rating: 2,
+    rating: 4,
     userRating: 0
   },
   {
