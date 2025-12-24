@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #3c433b;
+  --color-cartBtn: #647a67;
+  --color-hover: #3c433b;
+  --color-removeBtn: #f95738;
+}
+
+body {
+  background-color: #dad7cd;
+}
