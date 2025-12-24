@@ -16,14 +16,14 @@ const ProductCard = ({ product, onAddToCart }) => {
         {product.title}
       </h3>
 
-      <p className="text-[var(--theme-color)] text-sm mb-4 capitalize font-bold">{product.category}</p>
+      <p className="text-primary text-sm mb-4 capitalize font-bold">{product.category}</p>
       
       <div className="mt-auto flex justify-between items-center">
         <span className="text-xl font-bold text-gray-900">₹{priceInINR.toLocaleString('en-IN')}</span>
 
         <button
           onClick={() => onAddToCart(product)}
-          className="bg-[var(--theme-button)] text-white px-4 py-2 rounded-lg font-medium hover:bg-[var(--theme-hover)] transition-colors shadow-md cursor-pointer"
+          className="bg-button text-white px-4 py-2 rounded-lg font-medium hover:bg-hover transition-colors shadow-md cursor-pointer"
         >
           Add to Cart
         </button>

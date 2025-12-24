@@ -36,7 +36,7 @@ const App = () => {
   };
 
   return (
-    <div className="bg-[var(--theme-color)] min-h-screen font-sans">
+    <div className="bg-primary min-h-screen font-sans">
       <Navbar
         cartCount={cart.length}
         onOpenCart={() => setIsModalOpen(true)}

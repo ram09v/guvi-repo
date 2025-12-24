@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-:root {
-    --theme-color: #6D4C41;
-    --theme-button: #8D6E63;
-    --theme-hover: #4F311C;
+@theme {
+    --color-primary: #6D4C41;
+    --color-button: #8D6E63;
+    --color-hover: #4F311C;
 }
