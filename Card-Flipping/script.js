@@ -7,9 +7,10 @@ let matchedPairs = 0;
 const gameBoard = document.getElementById('game-board');
 const restartButton = document.getElementById('restart-button');
 const pairsCountSpan = document.getElementById('pairs-count');
+const statusEl = document.getElementById('status');
 
 /**
- * Shuffles an array.
+ * Shuffles an array using the Fisher-Yates (Knuth) algorithm.
  * @param {Array} array - The array to shuffle.
  */
 function shuffle(array) {
@@ -19,8 +20,7 @@ function shuffle(array) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
 
-        [array[currentIndex], array[randomIndex]] = [
-            array[randomIndex], array[currentIndex]];
+        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
     }
     return array;
 }
@@ -120,7 +120,9 @@ function disableCards(card1, card2) {
  */
 function unflipCards() {
     setTimeout(() => {
-        flippedCards.forEach(card => card.classList.remove('is-flipped'));
+        flippedCards.forEach(card => {
+            card.classList.remove('is-flipped');
+        });
         resetBoard();
     }, 1000);
 }
