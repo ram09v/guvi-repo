@@ -28,7 +28,7 @@ This is a RESTful API for User Authentication and Authorization using the MVC pa
 
     1.  User Registration
         - Method: `POST`
-        - URL: `http://localhost:5000/api/auth/register`
+        - URL: `http://localhost:6000/api/auth/register`
         - Body (raw JSON):
             ```json
             {
@@ -41,7 +41,7 @@ This is a RESTful API for User Authentication and Authorization using the MVC pa
 
     2.  User Login
         - Method: `POST`
-        - URL: `http://localhost:5000/api/auth/login`
+        - URL: `http://localhost:6000/api/auth/login`
         - Body (raw JSON):
             ```json
             {
@@ -53,7 +53,7 @@ This is a RESTful API for User Authentication and Authorization using the MVC pa
 
     3.  Access Protected Route
         - Method: `GET`
-        - URL: `http://localhost:5000/api/auth/me`
+        - URL: `http://localhost:6000/api/auth/me`
         - Headers:
             - `Authorization`: `Bearer <your-jwt-token>`
         - or use Postman's Authorization tab to set Bearer Token.
