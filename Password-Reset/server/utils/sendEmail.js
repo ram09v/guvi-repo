@@ -1,39 +1,40 @@
-const nodemailer = require("nodemailer");
+const axios = require("axios");
 
 const sendEmail = async (options) => {
+  const emailData = {
+    sender: {
+      name: process.env.FROM_NAME,
+      email: process.env.FROM_EMAIL,
+    },
+    to: [{ email: options.email }],
+    subject: options.subject,
+    textContent: options.message,
+  };
+
   try {
-
-      const { SMTP_HOST, 
-              SMTP_PORT, 
-              SMTP_SECURE, 
-              SMTP_USER, 
-              SMTP_PASS, 
-              FROM_NAME, 
-              FROM_EMAIL } = process.env;
-
-    const transporter = nodemailer.createTransport({
-      host: SMTP_HOST,
-      port: SMTP_PORT,
-      secure: SMTP_SECURE,
-      auth: {
-        user: SMTP_USER,
-        pass: SMTP_PASS,
+    const response = await axios({
+      method: "post",
+      url: process.env.BREVO_URL || "https://api.brevo.com/v3/smtp/email",
+      headers: {
+        "api-key": process.env.BREVO_API_KEY,
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
+      data: emailData,
     });
 
-    const message = {
-      from: `"${FROM_NAME}" <${FROM_EMAIL}>`,
-      to: options.email,
-      subject: options.subject,
-      text: options.message,
-    };
-
-    const info = await transporter.sendMail(message);
-
-    console.log("Email sent successfully!");
-    console.log("Message sent: %s", info.messageId);
+    console.log(
+      `Email sent successfully! Message ID: ${response.data.messageId}`,
+    );
   } catch (error) {
-    console.error("Error occurred:", error);
+    console.error("Brevo API Error:");
+    if (error.response) {
+      console.error(error.response.data);
+    } else {
+      console.error(error.message);
+    }
+
+    throw new Error("Email sending failed via Brevo API");
   }
 };
 
