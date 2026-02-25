@@ -14,8 +14,8 @@ const ForgotPasswordPage = () => {
       const response = await api.post('/forgotpassword', { email });
       toast.success(response.data.message || 'Reset link sent to your email!');
       setEmail('');
-    } catch (err) {
-      const errorMessage = err.response?.data?.message || 'Failed to connect to the server. Error sending email';
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || 'Failed to connect to the server. Error sending email';
       toast.error(errorMessage);
     } finally {
       setLoading(false);

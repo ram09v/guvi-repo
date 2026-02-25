@@ -70,7 +70,7 @@ const ResetPasswordPage = () => {
         title="Invalid or Expired Token"
         message="This password reset link is invalid or has expired. Please request a new one."
         linkTo="/forgot-password"
-        linkText="Back to Forgot Password"
+        linkText="Go Back to Forgot Password"
       />
     );
   }
@@ -80,7 +80,9 @@ const ResetPasswordPage = () => {
       <StatusMessage 
         type="success"
         title="Password Updated"
-        message="Your password has been successfully updated. You may now close this window."
+        message="Your password has been successfully updated."
+        linkTo="/login"
+        linkText="Go to Login"
       />
     );
   }

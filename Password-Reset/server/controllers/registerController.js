@@ -5,16 +5,19 @@ const registerUser = async (req, res) => {
   if (!username || !email || !password) {
     return res.status(400).json({ message: "Please include all fields" });
   }
+
   const userExists = await User.findOne({ email });
   if (userExists) {
     return res
       .status(400)
       .json({ success: false, message: "User already exists" });
   }
+
   const user = await User.create({ username, email, password });
   if (user) {
     res.status(201).json({
       success: true,
+      token: generateToken(user._id),
       message: "User registered successfully",
       data: {
         _id: user._id,
